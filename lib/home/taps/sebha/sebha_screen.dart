@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/app_colors.dart';
+import 'package:islami_app/utils/app_colors.dart';
+import 'package:islami_app/utils/app_styles.dart';
 
 class SebhaScreen extends StatefulWidget {
   @override
@@ -14,15 +15,17 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.all(25),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('assets/images/islami_logo.png'),
-          const Text(
+          Text(
             'سَبِّحِ اسْمَ رَبِّكَ الأعلى ',
-            style: TextStyle(color: AppColors.whiteColor, fontSize: 36),
+            style: AppStyles.bold36White,
           ),
           Stack(
             alignment: Alignment.center,
@@ -33,14 +36,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   //alignment: Alignment.center,
                   child: Image.asset('assets/images/sebha_image.png')),
               Container(
-                margin: const EdgeInsets.only(top: 70),
+                margin: EdgeInsets.only(top: height * 0.09),
                 child: Column(
                   children: [
-                    Text(
-                      sebhaText,
-                      style: const TextStyle(
-                          color: AppColors.whiteColor, fontSize: 36),
-                    ),
+                    Text(sebhaText, style: AppStyles.bold36White),
                     TextButton(
                       onPressed: () {
                         if (counter < 100) {

@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/app_colors.dart';
 import 'package:islami_app/model/hadeth_model.dart';
+import 'package:islami_app/utils/app_colors.dart';
+import 'package:islami_app/utils/app_styles.dart';
 
 import 'hadeth_details_screen.dart';
 
@@ -18,6 +19,9 @@ class _HadethScreenState extends State<HadethScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
     if (hadethList.isEmpty) {
       loadHadethContent();
     }
@@ -27,52 +31,60 @@ class _HadethScreenState extends State<HadethScreen> {
             child: CircularProgressIndicator(
             color: AppColors.primaryDark,
           ))
-        : Column(
-            children: [
-              Image.asset('assets/images/islami_logo.png'),
-              CarouselSlider.builder(
-                  options: CarouselOptions(
-                    height: 500,
-                    viewportFraction: 0.75,
-                    scrollDirection: Axis.horizontal,
-                    enableInfiniteScroll: false,
-                    enlargeCenterPage: true,
-                  ),
-                  itemCount: hadethList.length,
-                  itemBuilder:
-                      (BuildContext context, int itemIndex, int pageViewIndex) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, HadethDetailsScreen.routeName,
-                            arguments: hadethList[itemIndex]);
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                            color: AppColors.primaryDark,
-                            borderRadius: BorderRadius.circular(20),
-                            image: const DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/hadeth_pageview_bg.png'),
-                                fit: BoxFit.fill)),
-                        child: Column(
-                          children: [
-                            Text(
-                              hadethList[itemIndex].hadethTitle,
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                            Expanded(
-                                child: Text(
-                              hadethList[itemIndex].hadethContent.join(''),
-                              style: const TextStyle(fontSize: 18),
-                            ))
-                          ],
+        : Padding(
+            padding: EdgeInsets.only(top: height * 0.03),
+            child: Column(
+              children: [
+                Image.asset('assets/images/islami_logo.png'),
+                CarouselSlider.builder(
+                    options: CarouselOptions(
+                      height: height * 0.66,
+                      viewportFraction: 0.75,
+                      scrollDirection: Axis.horizontal,
+                      enableInfiniteScroll: false,
+                      enlargeCenterPage: true,
+                    ),
+                    itemCount: hadethList.length,
+                    itemBuilder: (BuildContext context, int itemIndex,
+                        int pageViewIndex) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, HadethDetailsScreen.routeName,
+                              arguments: hadethList[itemIndex]);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: width * 0.04,
+                              vertical: height * 0.04),
+                          decoration: BoxDecoration(
+                              color: AppColors.primaryDark,
+                              borderRadius: BorderRadius.circular(20),
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/hadeth_pageview_bg.png'),
+                                  fit: BoxFit.fill)),
+                          child: Column(
+                            children: [
+                              Text(hadethList[itemIndex].hadethTitle,
+                                  style: AppStyles.bold24Black),
+                              SizedBox(
+                                height: height * 0.02,
+                              ),
+                              Expanded(
+                                  child: Text(
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.center,
+                                hadethList[itemIndex].hadethContent.join(''),
+                                style: AppStyles.bold16Black,
+                              ))
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }),
-            ],
+                      );
+                    }),
+              ],
+            ),
           );
   }
 

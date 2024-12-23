@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/app_colors.dart';
 import 'package:islami_app/model/sura_model.dart';
+import 'package:islami_app/utils/app_colors.dart';
+import 'package:islami_app/utils/app_styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'sura_details_screen.dart';
@@ -36,8 +37,11 @@ class _QuranScreenState extends State<QuranScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.only(
+          right: width * 0.03, left: width * 0.03, top: height * 0.03),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -66,9 +70,7 @@ class _QuranScreenState extends State<QuranScreen> {
                   color: AppColors.primaryDark,
                 ),
                 hintText: 'Sura Name',
-                hintStyle: const TextStyle(
-                  color: AppColors.whiteColor,
-                ),
+                hintStyle: AppStyles.bold16White,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
@@ -80,10 +82,12 @@ class _QuranScreenState extends State<QuranScreen> {
                       const BorderSide(width: 2, color: AppColors.primaryDark),
                 )),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: height * 0.02,
           ),
-          searchText.isNotEmpty ? SizedBox() : mostRecentlyWidget(),
+          searchText.isNotEmpty
+              ? SizedBox()
+              : mostRecentlyWidget(height, width),
           Text(
             'Suras List',
             style: TextStyle(color: AppColors.whiteColor),
@@ -123,11 +127,11 @@ class _QuranScreenState extends State<QuranScreen> {
     );
   }
 
-  Widget mostRecentlyWidget() {
+  Widget mostRecentlyWidget(var height, var width) {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(SuraDetailsScreen.routeName,
-            arguments: filteredList[lastSura['index'] ?? 0]);
+            arguments: filteredList[lastSura['index']]);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -137,10 +141,12 @@ class _QuranScreenState extends State<QuranScreen> {
             style: TextStyle(color: AppColors.whiteColor),
           ),
           SizedBox(
-            height: 10,
+            height: height * 0.01,
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            height: height * 0.16,
+            padding: EdgeInsets.symmetric(
+                vertical: height * 0.01, horizontal: width * 0.01),
             decoration: BoxDecoration(
               color: AppColors.primaryDark,
               borderRadius: BorderRadius.circular(20),
@@ -149,11 +155,21 @@ class _QuranScreenState extends State<QuranScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(lastSura['suraEnName'] ?? ''),
-                    Text(lastSura['suraArName'] ?? ''),
-                    Text('${lastSura['numberOfVerses'] ?? ''} verses'),
+                    Text(
+                      lastSura['suraEnName'] ?? '',
+                      style: AppStyles.bold24Black,
+                    ),
+                    Text(
+                      lastSura['suraArName'] ?? '',
+                      style: AppStyles.bold24Black,
+                    ),
+                    Text(
+                      '${lastSura['numberOfVerses'] ?? ''} verses',
+                      style: AppStyles.bold16Black,
+                    ),
                   ],
                 ),
                 Image.asset('assets/images/quran_container_image.png')
@@ -161,7 +177,7 @@ class _QuranScreenState extends State<QuranScreen> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: height * 0.02,
           ),
         ],
       ),
@@ -186,7 +202,7 @@ class _QuranScreenState extends State<QuranScreen> {
     String suraEnName = prefs.getString('suraEnName') ?? '';
     String suraArName = prefs.getString('suraArName') ?? '';
     String numberOfVerses = prefs.getString('numberOfVerses') ?? '';
-    int index = prefs.getInt('index') ?? 0;
+    int? index = prefs.getInt('index');
 
     return {
       'suraEnName': suraEnName,

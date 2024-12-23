@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/app_colors.dart';
 import 'package:islami_app/model/sura_model.dart';
+import 'package:islami_app/utils/app_colors.dart';
+import 'package:islami_app/utils/app_styles.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'sura_details_screen';
@@ -15,6 +16,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
     SuraModel args = ModalRoute.of(context)!.settings.arguments as SuraModel;
     if (sura.isEmpty) {
       loadSuraFiles(args.index);
@@ -22,10 +26,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          args.suraEnglishName,
-          style: const TextStyle(color: AppColors.primaryDark),
-        ),
+        title: Text(args.suraEnglishName, style: AppStyles.bold20Primary),
       ),
       body: Stack(
         alignment: Alignment.center,
@@ -41,37 +42,27 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           ),
           Column(
             children: [
-              const SizedBox(
-                height: 17,
+              SizedBox(
+                height: height * 0.04,
               ),
-              Text(
-                args.suraArabicName,
-                style:
-                    const TextStyle(color: AppColors.primaryDark, fontSize: 24),
-              ),
-              Expanded(
-                child: SizedBox(
-                  //height:460,
-                  child: sura.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                          color: AppColors.primaryDark,
-                        ))
-                      : ListView.builder(
-                          padding: const EdgeInsets.all(20),
-                          itemCount: 1,
-                          itemBuilder: (context, index) {
-                            return Text(
-                              sura,
+              Text(args.suraArabicName, style: AppStyles.bold24Primary),
+              SizedBox(
+                height: height * 0.7,
+                child: sura.isEmpty
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                        color: AppColors.primaryDark,
+                      ))
+                    : ListView.builder(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * 0.04, horizontal: width * 0.04),
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          return Text(sura,
                               textAlign: TextAlign.center,
                               textDirection: TextDirection.rtl,
-                              style: const TextStyle(
-                                color: AppColors.primaryDark,
-                                fontSize: 16,
-                              ),
-                            );
-                          }),
-                ),
+                              style: AppStyles.bold20Primary);
+                        }),
               )
             ],
           )

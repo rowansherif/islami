@@ -3,7 +3,7 @@ import 'package:islami_app/home/home_screen.dart';
 
 import 'home/taps/hadeth/hadeth_details_screen.dart';
 import 'home/taps/quran/sura_details_screen.dart';
-import 'my_app_theme.dart';
+import 'utils/my_app_theme.dart';
 
 void main() {
   runApp(MyApp());
