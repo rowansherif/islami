@@ -1,16 +1,8 @@
-# islami_app
+Islami" is a user-friendly Flutter application designed to enhance the Islamic experience for Muslims. The app consists of five main sections:
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Surah Selection & Search – Users can browse and search for specific Surahs to read from the Quran.
+Hadith Reading – A dedicated page to explore and read authentic Hadiths.
+Tasbih (Prayer Beads) – A digital counter to help users keep track of their Tasbih recitations.
+Islamic Radio – Provides access to live streaming of Islamic lectures and recitations.
+Prayer Times – Displays accurate prayer timings based on the user's location.
+With a simple and intuitive interface, "Islami" ensures an enriching spiritual experience for users looking to engage with Islamic content daily.
