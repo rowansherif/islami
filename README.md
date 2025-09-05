@@ -12,12 +12,14 @@ With a simple and intuitive interface, "Islami" ensures an enriching spiritual e
 
 ## Screenshots
 
-#App Intro
+### App Intro
 <p align="center">
   <img src="assets/islami_splash.png" width="250" />
   <img src="assets/islami_onBoarding.png" width="250" />
 </p>
-# App Home
+
+### App Home
+
 There is a Bottom app bar with 5 tabs (Home (for Quran), Hadeeth, Sebha, Radio, Time (for prayers time))
 <p align="center">
   <img src="assets/islami_home_page.png" width="250" />
