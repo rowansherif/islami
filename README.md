@@ -11,12 +11,15 @@ Prayer Times – Displays accurate prayer timings based on the user's location.
 With a simple and intuitive interface, "Islami" ensures an enriching spiritual experience for users looking to engage with Islamic content daily.
 
 ## Screenshots
+
+#App Intro
 <p align="center">
-  <h>App Intro</h>
   <img src="assets/islami_splash.png" width="250" />
   <img src="assets/islami_onBoarding.png" width="250" />
-  <h>App Home</h>
-  <p>There is a Bottom app bar with 5 tabs (Home (for Quran), Hadeeth, Sebha, Radio, Time (for prayers time))</p>
+</p>
+# App Home
+There is a Bottom app bar with 5 tabs (Home (for Quran), Hadeeth, Sebha, Radio, Time (for prayers time))
+<p align="center">
   <img src="assets/islami_home_page.png" width="250" />
   <img src="assets/sura_screen.png" width="250" />
   <img src="assets/hadeeth_tab.png" width="250" />
