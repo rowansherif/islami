@@ -15,4 +15,4 @@ With a simple and intuitive interface, "Islami" ensures an enriching spiritual e
 
 ![Demo](assets/demo.gif)
 
-[🎥 Watch Full Demo](https://github.com/rowansherif/islami/main/assets/islami_app.mp4)
+[🎥 Watch Full Demo](https://github.com/rowansherif/islami/master/assets/islami_app.mp4)
