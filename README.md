@@ -1,4 +1,4 @@
-## Project Description"
+## Project Description:
 Islami" is a user-friendly Flutter application designed to enhance the Islamic experience for Muslims. The app consists of five main sections:
 
 Surah Selection & Search – Users can browse and search for specific Surahs to read from the Quran.
