@@ -8,4 +8,4 @@ Islamic Radio – Provides access to live streaming of Islamic lectures and reci
 Prayer Times – Displays accurate prayer timings based on the user's location.
 With a simple and intuitive interface, "Islami" ensures an enriching spiritual experience for users looking to engage with Islamic content daily.
 
-![Demo Video](islami_app.mp4)
+https://github.com/rowansherif/islami/blob/master/islami_app.mp4
